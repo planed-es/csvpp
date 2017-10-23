@@ -33,7 +33,7 @@ namespace Csv
     struct iterator : public std::iterator_traits<std::size_t>
     {
     public:
-      iterator(Document& document, std::size_t i) : document(document), i(i) {}
+      iterator(const Document& document, std::size_t i) : document(document), i(i) {}
       bool operator==(iterator a) const { return i == a.i; }
       bool operator!=(iterator a) const { return i != a.i; }
       DocumentRow operator*()     const { return DocumentRow(document, i); }
@@ -41,30 +41,12 @@ namespace Csv
       void        operator--() { --i; }
 
     private:
-      Document&   document;
+      const Document& document;
       std::size_t i;
     };
 
-    struct const_iterator : public std::iterator_traits<std::size_t>
-    {
-    public:
-      const_iterator(const Document& document, std::size_t i) : document(document), i(i) {}
-      bool operator==(const_iterator a) const { return i == a.i; }
-      bool operator!=(const_iterator a) const { return i != a.i; }
-      DocumentRow operator*()     const { return DocumentRow(document, i); }
-      void        operator++() { ++i; }
-      void        operator--() { --i; }
-
-    private:
-      const Document& document;
-      std::size_t     i;
-    };
-
-    iterator begin() { return iterator(*this, 0);           }
-    iterator end()   { return iterator(*this, row_count()); }
-
-    const_iterator const_begin() const { return const_iterator(*this, 0);           }
-    const_iterator const_end()   const { return const_iterator(*this, row_count()); }
+    iterator begin() const { return iterator(*this, 0);           }
+    iterator end()   const { return iterator(*this, row_count()); }
 
     Document() : separator(';') {}
 
