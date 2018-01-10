@@ -17,7 +17,7 @@ static vector<string> csv_split(const string& str, char c)
 
   for (i = 0 ; str[i] ; ++i)
   {
-    if (word.length() == 0 && str[i] == '"')
+    if (word.length() == 0 && str[i] == '"' && !in_quotes)
       in_quotes = true;
     else
     {
