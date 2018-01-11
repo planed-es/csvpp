@@ -40,8 +40,7 @@ static vector<string> csv_split(const string& str, char c)
         word += str[i];
     }
   }
-  if (word.length() > 0)
-    ret.push_back(word);
+  ret.push_back(word);
   return (ret);
 }
 
