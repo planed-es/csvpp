@@ -12,6 +12,7 @@ file(GLOB_RECURSE src
      src/*.cpp)
 
 add_library(csvpp SHARED ${src})
+add_library(csvpp_static STATIC ${src})
 
 target_include_directories(csvpp PUBLIC src)
 
