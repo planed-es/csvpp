@@ -13,5 +13,7 @@ file(GLOB_RECURSE src
 
 add_library(csvpp SHARED ${src})
 
+target_include_directories(csvpp PUBLIC src)
+
 install(TARGETS csvpp LIBRARY DESTINATION lib)
 install(DIRECTORY src/csv DESTINATION include)
