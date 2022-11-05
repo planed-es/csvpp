@@ -15,6 +15,7 @@ add_library(csvpp SHARED ${src})
 add_library(csvpp_static STATIC ${src})
 
 target_include_directories(csvpp PUBLIC src)
+target_include_directories(csvpp_static PUBLIC src)
 
 install(TARGETS csvpp LIBRARY DESTINATION lib)
 install(DIRECTORY src/csv DESTINATION include)
