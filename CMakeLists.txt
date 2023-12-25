@@ -20,5 +20,8 @@ add_library(csvpp_static STATIC ${src})
 target_include_directories(csvpp PUBLIC src)
 target_include_directories(csvpp_static PUBLIC src)
 
+configure_file(csvpp.pc.in csvpp.pc @ONLY)
+
 install(TARGETS csvpp LIBRARY DESTINATION lib)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/csvpp.pc DESTINATION lib/pkgconfig)
 install(DIRECTORY src/csv DESTINATION include)
