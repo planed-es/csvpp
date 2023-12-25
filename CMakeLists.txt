@@ -1,11 +1,14 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.5)
 
-project(csvpp)
+project(csvpp
+  LANGUAGES CXX
+  DESCRIPTION "C++/Boost-based library for reading and writing CSV files"
+  VERSION 1.0.1)
 
-find_package(Boost COMPONENTS filesystem system REQUIRED)
+find_package(Boost COMPONENTS system REQUIRED)
 
 if (CMAKE_COMPILER_IS_GNUCC)
-  set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
+  set(CMAKE_CXX_FLAGS "-std=c++17 ${CMAKE_CXX_FLAGS}")
 endif()
 
 file(GLOB_RECURSE src

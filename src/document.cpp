@@ -1,8 +1,8 @@
 #include "csv/document.hpp"
 #include <sstream>
 #include <fstream>
+#include <filesystem>
 #include <boost/algorithm/string.hpp>
-#include <boost/filesystem.hpp>
 #include <boost/tokenizer.hpp>
 
 using namespace Csv;
@@ -66,7 +66,7 @@ bool Document::load_from_string(std::string src)
 
 bool Document::load_from_file(const std::string& path)
 {
-  if (boost::filesystem::exists(path.c_str()))
+  if (std::filesystem::exists(path.c_str()))
   {
     ifstream     input(path.c_str());
     stringstream stream;
